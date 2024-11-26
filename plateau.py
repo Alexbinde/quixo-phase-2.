@@ -1,5 +1,6 @@
 from quixo_error import QuixoError
 
+
 class Plateau:
     def __init__(self, plateau=None):
         self.plateau = self.generer_le_plateau(plateau)
@@ -31,6 +32,7 @@ class Plateau:
         if value not in {' ', 'X', 'O'}:
             raise QuixoError("Valeur invalide.")
         self.plateau[x][y] = value
+
     def insérer_par_le_bas(self, cube, x, y):
         if not (0 <= x < 5 and 0 <= y < 5):
             raise QuixoError("Coordonnées invalides.")
