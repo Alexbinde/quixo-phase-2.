@@ -56,3 +56,18 @@ def obtenir_etat_partie(id_partie, idul, secret):
         raise RuntimeError(rep.json()['message'])
     else:
         raise ConnectionError()
+
+
+def récupérer_une_partie(id_partie, idul, secret):
+    rep = requests.get(
+        f"{URL}partie/{id_partie}/",
+        auth=(idul, secret)
+    )
+    if rep.status_code == 200:
+        data = rep.json()
+        return data['id'], data['état']['joueurs']
+        return data['état']['plateau'], data['gagnant']
+    elif rep.status_code == 401:
+        raise PermissionError(rep.json()['message'])
+    else:
+        raise ConnectionError()
