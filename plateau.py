@@ -1,4 +1,5 @@
 from quixo_error import QuixoError
+import copy
 
 
 class Plateau:
@@ -7,6 +8,9 @@ class Plateau:
 
     def __str__(self):
         return '\n'.join(' '.join(row) for row in self.plateau)
+
+    def état_plateau(self):
+        return copy.deepcopy(self.plateau)
 
     def generer_le_plateau(self, plateau):
         if plateau is None:
