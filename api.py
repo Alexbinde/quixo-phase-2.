@@ -65,8 +65,11 @@ def récupérer_une_partie(id_partie, idul, secret):
     )
     if rep.status_code == 200:
         data = rep.json()
-        return data['id'], data['état']['joueurs']
-        return data['état']['plateau'], data['gagnant']
+        id_partie = data['id']
+        joueurs = data['état']['joueurs']
+        plateau = data['état']['plateau']
+        gagnant = data['gagnant']
+        return id_partie, joueurs, plateau, gagnant
     elif rep.status_code == 401:
         raise PermissionError(rep.json()['message'])
     else:
