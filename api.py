@@ -1,6 +1,5 @@
 import requests
 
-
 URL = 'https://pax.ulaval.ca/quixo/api/a24/'
 
 
@@ -58,7 +57,7 @@ def obtenir_etat_partie(id_partie, idul, secret):
         raise ConnectionError()
 
 
-def récupérer_une_partie(id_partie, idul, secret):
+def recuperer_une_partie(id_partie, idul, secret):
     rep = requests.get(
         f"{URL}partie/{id_partie}/",
         auth=(idul, secret)
