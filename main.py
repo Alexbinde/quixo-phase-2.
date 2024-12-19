@@ -1,6 +1,8 @@
+import argparse
 from quixo import interpréter_la_commande
 from api import initialiser_partie, jouer_un_coup
 from quixo_error import QuixoError
+from quixo_ia import QuixoIA
 
 
 def main():
@@ -9,6 +11,12 @@ def main():
     idul = args.idul
     secret = "votre_jeton_personnel"  # Remplacez par votre jeton personnel
 
+    parser = argparse.ArgumentParser(description="Quixo")
+    parser.add_argument(
+        "-a", "--autonome", action="store_true", help="Jouer de façon autonome"
+    )
+    args = parser.parse_args()
+
     try:
         # Initialiser une nouvelle partie
         id_partie, joueurs, plateau = initialiser_partie(idul, secret)
@@ -16,14 +24,22 @@ def main():
         print(f"Joueurs : {joueurs}")
         afficher_plateau(plateau)
 
+        ia = QuixoIA()
+
         while True:
-            # Demander à l'utilisateur de spécifier son coup
-            origine, direction = demander_coup()
+            if args.autonome:
+                # Jouer un coup automatiquement avec l'IA
+                symbole = "X"  # Remplacez par le symbole du joueur
+                coup = ia.jouer_un_coup(symbole)
+                origine, direction = coup["origine"], coup["direction"]
+            else:
+                # Demander à l'utilisateur de spécifier son coup
+                origine, direction = demander_coup()
+
             try:
                 # Jouer un coup
                 id_partie, joueurs, plateau = jouer_un_coup(
-                                            id_partie, origine,
-                                            direction, idul, secret
+                    id_partie, origine, direction, idul, secret
                 )
                 afficher_plateau(plateau)
             except QuixoError as e:
