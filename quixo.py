@@ -7,6 +7,7 @@ partie, déplacer un cube, choisir un coup et interpréter les commandes.
 """
 
 import argparse
+import copy
 from plateau import Plateau
 from quixo_error import QuixoError
 
@@ -32,7 +33,6 @@ class Quixo:
         Retourne:
         Une copie profonde de l'état du plateau.
         """
-        import copy
         return copy.deepcopy(self.plateau)
 
     def __str__(self):
@@ -79,8 +79,8 @@ class Quixo:
             if direction not in {"haut", "bas", "gauche", "droite"}:
                 raise QuixoError("Direction invalide.")
             return (x, y), direction
-        except ValueError:
-            raise QuixoError("Position d'origine invalide.")
+        except ValueError as exc:
+            raise QuixoError("Position d'origine invalide.") from exc
 
     @staticmethod
     def interpréter_la_commande():

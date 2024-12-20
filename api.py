@@ -36,7 +36,7 @@ def initialiser_partie(idul, secret):
         return data['id'], data['état']['joueurs'], data['état']['plateau']
     if rep.status_code == 401:
         raise PermissionError(rep.json()['message'])
-    elif rep.status_code == 406:
+    if rep.status_code == 406:
         raise RuntimeError(rep.json()['message'])
     else:
         raise ConnectionError()
@@ -77,7 +77,7 @@ def jouer_un_coup(id_partie, origine, direction, idul, secret):
         return data['id'], data['état']['joueurs'], data['état']['plateau']
     if rep.status_code == 401:
         raise PermissionError(rep.json()['message'])
-    elif rep.status_code == 406:
+    if rep.status_code == 406:
         raise RuntimeError(rep.json()['message'])
     else:
         raise ConnectionError()
@@ -109,7 +109,7 @@ def obtenir_etat_partie(id_partie, idul, secret):
         return data['id'], data['état']['joueurs'], data['état']['plateau']
     if rep.status_code == 401:
         raise PermissionError(rep.json()['message'])
-    elif rep.status_code == 406:
+    if rep.status_code == 406:
         raise RuntimeError(rep.json()['message'])
     else:
         raise ConnectionError()
