@@ -149,7 +149,7 @@ class QuixoIA(Quixo):
             coup = self.trouver_un_coup_bloquant(symbole)
         return coup
 
-    def stratégie_simple(self, plateau, symbole):
+    def stratégie_simple(self):
         """
         Stratégie simple pour maximiser le nombre de cubes sur une ligne.
 
