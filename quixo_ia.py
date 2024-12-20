@@ -1,3 +1,13 @@
+"""
+Module quixo_ia
+
+Ce module contient la classe QuixoIA qui implémente l'intelligence artificielle
+pour le jeu Quixo. La classe QuixoIA hérite de la classe Quixo et inclut des
+méthodes pour lister les coups possibles, analyser le plateau, vérifier si la
+partie est terminée, trouver des coups gagnants ou bloquants, et jouer un coup
+en utilisant différentes stratégies.
+"""
+
 import random
 from quixo import Quixo
 from quixo_error import QuixoError
