@@ -1,29 +1,7 @@
 import random
-
-
-class QuixoError(Exception):
-    """Exception personnalisée pour les erreurs du jeu Quixo."""
-    pass
-
-
-class Quixo:
-    """Classe de base pour le jeu Quixo."""
-
-    def partie_terminée(self):
-        """Vérifie si la partie est terminée."""
-        pass
-
-    def état_plateau(self):
-        """Retourne l'état actuel du plateau."""
-        pass
-
-
-class Plateau:
-    """Classe représentant le plateau de jeu."""
-
-    def __init__(self, état):
-        """Initialise le plateau avec l'état donné."""
-        pass
+from quixo import Quixo
+from quixo_error import QuixoError
+from plateau import Plateau
 
 
 class QuixoIA(Quixo):
@@ -44,6 +22,7 @@ class QuixoIA(Quixo):
             raise QuixoError('Le cube doit être "X" ou "O".')
         if self.partie_terminée():
             raise QuixoError("La partie est déjà terminée.")
+
         coups_possibles = []
         # Logique pour lister les coups possibles
         return coups_possibles
