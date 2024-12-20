@@ -17,7 +17,7 @@ from plateau import Plateau
 class QuixoIA(Quixo):
     """Classe pour l'IA du jeu Quixo, héritant de la classe Quixo."""
 
-    def lister_les_coups_possibles(self, plateau, cube):
+    def lister_les_coups_possibles(self, cube):
         """
         Liste les coups possibles pour le joueur spécifié.
 
@@ -37,7 +37,7 @@ class QuixoIA(Quixo):
         # Logique pour lister les coups possibles
         return coups_possibles
 
-    def analyser_le_plateau(self, plateau):
+    def analyser_le_plateau(self):
         """
         Analyse le plateau et compte les lignes de 2, 3, 4 et 5 cubes.
 
@@ -64,7 +64,7 @@ class QuixoIA(Quixo):
         # Logique pour vérifier si la partie est terminée
         return None
 
-    def trouver_un_coup_vainqueur(self, symbole):
+    def trouver_un_coup_vainqueur(self):
         """
         Trouve un coup gagnant pour le joueur spécifié.
 
@@ -77,7 +77,7 @@ class QuixoIA(Quixo):
         # Logique pour trouver un coup vainqueur
         return None
 
-    def trouver_un_coup_bloquant(self, symbole):
+    def trouver_un_coup_bloquant(self):
         """
         Trouve un coup bloquant pour le joueur spécifié.
 
@@ -117,7 +117,7 @@ class QuixoIA(Quixo):
         # Logique pour jouer le coup
         return coup
 
-    def simuler_coup(self, plateau, coup):
+    def simuler_coup(self, plateau):
         """
         Simule un coup sur une copie du plateau.
 
@@ -133,7 +133,7 @@ class QuixoIA(Quixo):
         # Logique pour simuler le coup sur nouveau_plateau
         return nouveau_plateau
 
-    def stratégie_base(self, plateau, symbole):
+    def stratégie_base(self, symbole):
         """
         Stratégie de base pour trouver un coup gagnant ou bloquant.
 
@@ -177,7 +177,7 @@ class QuixoIA(Quixo):
         coups_possibles = self.lister_les_coups_possibles(plateau, symbole)
         return random.choice(coups_possibles)
 
-    def stratégie_avancée(self, plateau, symbole):
+    def stratégie_avancée(self):
         """
         Stratégie avancée pour simuler plusieurs coups à l'avance.
 
